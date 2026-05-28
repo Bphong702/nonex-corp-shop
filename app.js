@@ -134,6 +134,7 @@ let userOrders = [];
 let cashFlowLogs = [];
 let depositLogs = [];
 let captchaAnswer = 0;
+let userTotalDeposits = 0;
 
 // Deposit gateway state
 let selectedGateway = null;
@@ -190,6 +191,7 @@ function loadUserState() {
     const depositKey = `nonex_${currentUser}_deposits`;
 
     userBalance = parseInt(localStorage.getItem(balanceKey) || "0");
+    userTotalDeposits = parseInt(localStorage.getItem(`nonex_${currentUser}_total_deposits`) || "0");
     
     try {
         userOrders = JSON.parse(localStorage.getItem(ordersKey) || "[]");
@@ -222,9 +224,93 @@ function saveUserState() {
     localStorage.setItem(ordersKey, JSON.stringify(userOrders));
     localStorage.setItem(flowKey, JSON.stringify(cashFlowLogs));
     localStorage.setItem(depositKey, JSON.stringify(depositLogs));
+    localStorage.setItem(`nonex_${currentUser}_total_deposits`, userTotalDeposits);
 
     localStorage.setItem("nonex_session_user", currentUser);
     localStorage.setItem("nonex_session_balance", userBalance);
+}
+
+function showMiddlePopup(message) {
+    // Remove existing if any
+    const existingPopup = document.getElementById("promo-announcement-modal");
+    if (existingPopup) existingPopup.remove();
+    const existingBackdrop = document.getElementById("promo-backdrop");
+    if (existingBackdrop) existingBackdrop.remove();
+
+    const popupEl = document.createElement("div");
+    popupEl.id = "promo-announcement-modal";
+    popupEl.style.position = "fixed";
+    popupEl.style.top = "50%";
+    popupEl.style.left = "50%";
+    popupEl.style.transform = "translate(-50%, -50%) scale(0.9)";
+    popupEl.style.background = "rgba(18, 18, 22, 0.95)";
+    popupEl.style.border = "1px solid rgba(88, 101, 242, 0.3)";
+    popupEl.style.borderRadius = "16px";
+    popupEl.style.padding = "2rem";
+    popupEl.style.zIndex = "1000";
+    popupEl.style.width = "90%";
+    popupEl.style.maxWidth = "450px";
+    popupEl.style.textAlign = "center";
+    popupEl.style.boxShadow = "0 20px 40px rgba(0, 0, 0, 0.5), 0 0 30px rgba(88, 101, 242, 0.2)";
+    popupEl.style.transition = "all 0.3s ease";
+    popupEl.style.backdropFilter = "blur(10px)";
+    popupEl.style.opacity = "1";
+    
+    popupEl.innerHTML = `
+        <div style="font-size: 3rem; color: #ffca28; margin-bottom: 1rem;"><i class="fa-solid fa-gift"></i></div>
+        <h3 style="font-size: 1.3rem; font-weight: 800; color: #ffffff; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.5px;">Quà Tặng Thành Viên</h3>
+        <p style="font-size: 0.95rem; color: #b4b9c2; line-height: 1.6; margin-bottom: 1.8rem;">${message}</p>
+        <button id="btn-close-promo-popup" style="background: #3b82f6; color: white; border: none; padding: 0.7rem 2rem; border-radius: 8px; font-weight: 700; cursor: pointer; width: 100%; transition: all 0.2s; text-transform: uppercase; letter-spacing: 1px;">Xác nhận</button>
+    `;
+    
+    const backdropEl = document.createElement("div");
+    backdropEl.id = "promo-backdrop";
+    backdropEl.style.position = "fixed";
+    backdropEl.style.top = "0";
+    backdropEl.style.left = "0";
+    backdropEl.style.width = "100vw";
+    backdropEl.style.height = "100vh";
+    backdropEl.style.background = "rgba(0, 0, 0, 0.6)";
+    backdropEl.style.backdropFilter = "blur(5px)";
+    backdropEl.style.zIndex = "999";
+    backdropEl.style.transition = "all 0.3s ease";
+    
+    document.body.appendChild(backdropEl);
+    document.body.appendChild(popupEl);
+    
+    setTimeout(() => {
+        popupEl.style.transform = "translate(-50%, -50%) scale(1)";
+    }, 50);
+    
+    document.getElementById("btn-close-promo-popup").onclick = () => {
+        popupEl.style.transform = "translate(-50%, -50%) scale(0.9)";
+        popupEl.style.opacity = "0";
+        backdropEl.style.opacity = "0";
+        setTimeout(() => {
+            popupEl.remove();
+            backdropEl.remove();
+        }, 300);
+    };
+}
+
+function checkAndApplyPromo(providerName) {
+    if (!currentUser) return;
+    const promoAppliedKey = `nonex_${currentUser}_promo_applied`;
+
+    if (localStorage.getItem(promoAppliedKey) !== "true") {
+        userBalance += 50000;
+        cashFlowLogs.unshift({
+            desc: `Khuyến mãi đăng nhập/đăng ký thành viên (${providerName})`,
+            date: getCurrentDateTimeString(),
+            change: 50000,
+            balance: userBalance
+        });
+        localStorage.setItem(promoAppliedKey, "true");
+        saveUserState();
+        
+        // Show middle popup
+        showMiddlePopup("Chúc mừng bạn đã đăng ký hoặc đăng nhập thành công và được khuyến mãi 50K!");
+    }
 }
 
 // Load Initial Data
@@ -359,6 +445,7 @@ function handleLoginSubmit(event) {
     // Success Authentication Simulator
     currentUser = user;
     loadUserState();
+    checkAndApplyPromo("Đăng nhập");
     saveUserState();
 
     updateUserUI();
@@ -394,21 +481,12 @@ function handleRegisterSubmit(event) {
 function simulateSocialLogin(provider) {
     currentUser = provider + "User_" + Math.floor(100 + Math.random() * 900);
     
-    // Check if they already exist, if so load, otherwise gift 50k
+    // Check if they already exist, if so load
     loadUserState();
-    if (userBalance === 0 && cashFlowLogs.length === 0) {
-        userBalance = 50000;
-        cashFlowLogs.push({
-            desc: `Khuyến mãi đăng nhập trải nghiệm ${provider}`,
-            date: getCurrentDateTimeString(),
-            change: 50000,
-            balance: 50000
-        });
-    }
+    checkAndApplyPromo(provider);
     saveUserState();
 
     updateUserUI();
-    showToast(`Đăng nhập thành công bằng ${provider}! Đã cộng 50,000đ dùng thử`, "success");
     navigate("home");
 }
 
@@ -699,6 +777,17 @@ function confirmPurchaseKey() {
         return;
     }
 
+    // Special promotion deposit check
+    if (userTotalDeposits === 0) {
+        showMiddlePopup("Bạn cần nạp thêm tiền để mua. Số dư 50K được khuyến mãi nên bạn cần nạp thêm để mua và nhớ là nạp phải trên 50K.");
+        return;
+    }
+    
+    if (userTotalDeposits <= 50000) {
+        showMiddlePopup("Bạn cần nạp trên 50K để mua đơn hàng và có 50K khuyến mãi (Ví dụ: Tổng lại bạn đã có 100K).");
+        return;
+    }
+
     const totalCost = selectedPackage.price * purchaseQty;
     if (userBalance < totalCost) {
         showToast("Số dư tài khoản không đủ! Hãy tiến hành nạp tiền.", "error");
@@ -888,6 +977,7 @@ function simulateQRDepositSuccess() {
     setTimeout(() => {
         pendingLog.status = "success";
         userBalance += pendingLog.amount;
+        userTotalDeposits += pendingLog.amount;
         
         // Log to Cash Flow
         cashFlowLogs.unshift({
@@ -990,6 +1080,7 @@ function handleScratchSubmit(event) {
         const discountPercent = Math.round((1 - rate) * 100);
 
         userBalance += credit;
+        userTotalDeposits += credit;
 
         // Log cash flow
         cashFlowLogs.unshift({
