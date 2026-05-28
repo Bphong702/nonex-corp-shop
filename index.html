@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NONEX CORP SHOP | Hệ thống bán key aimbot và bypass</title>
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Hệ thống bán key aimbot và bypass, tối ưu, regedit, dịch vụ mạng xã hội tự động, nạp tiền 24/24">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS Styles -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="app-wrapper">
+        <!-- ==========================================
+             Left Navigation Sidebar
+             ========================================== -->
+        <aside class="sidebar" id="app-sidebar">
+            <div class="logo-area" onclick="navigate('home')">
+                <span class="logo-text">NONEX CORP <span style="color: var(--accent-blue);">SHOP</span></span>
+                <span class="logo-tag">SHOP</span>
+            </div>
+
+            <!-- MENU CHÍNH -->
+            <div class="menu-section">
+                <h3 class="menu-title">Menu chính</h3>
+                <ul class="menu-list">
+                    <li>
+                        <a onclick="navigate('profile')" class="menu-item" id="menu-profile">
+                            <span class="menu-item-label"><i class="fa-solid fa-user-gear"></i> Tài khoản</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a onclick="navigate('home')" class="menu-item active" id="menu-home">
+                            <span class="menu-item-label"><i class="fa-solid fa-house"></i> Trang chủ</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a onclick="toggleDepositDropdown()" class="menu-item" id="menu-deposit-parent">
+                            <span class="menu-item-label"><i class="fa-solid fa-wallet"></i> Nạp tiền</span>
+                            <span class="menu-tag auto">Auto</span>
+                        </a>
+                        <!-- Submenu for Deposit clicked -->
+                        <ul class="submenu-list" id="deposit-submenu">
+                            <li><a onclick="navigate('deposit-bank')" class="submenu-item" id="menu-dep-bank">Nạp ngân hàng</a></li>
+                            <li><a onclick="navigate('deposit-scratch')" class="submenu-item" id="menu-dep-scratch">Nạp thẻ cào</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a onclick="navigate('orders')" class="menu-item" id="menu-orders">
+                            <span class="menu-item-label"><i class="fa-solid fa-cart-shopping"></i> Đơn hàng</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a onclick="navigate('history')" class="menu-item" id="menu-history">
+                            <span class="menu-item-label"><i class="fa-solid fa-clock-rotate-left"></i> Lịch sử</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- DỊCH VỤ -->
+            <div class="menu-section">
+                <h3 class="menu-title">Dịch vụ</h3>
+                <ul class="menu-list">
+                    <li>
+                        <a onclick="navigate('news')" class="menu-item" id="menu-news">
+                            <span class="menu-item-label"><i class="fa-solid fa-newspaper"></i> Tin tức</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a onclick="navigate('downloads')" class="menu-item" id="menu-downloads">
+                            <span class="menu-item-label"><i class="fa-solid fa-download"></i> Tải xuống</span>
+                            <span class="menu-tag free">Free</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a onclick="navigate('contact')" class="menu-item" id="menu-contact">
+                            <span class="menu-item-label"><i class="fa-solid fa-phone"></i> Liên hệ</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+
+        <!-- ==========================================
+             Main Display Area
+             ========================================== -->
+        <div class="main-container">
+            <!-- Navbar top bar -->
+            <nav class="navbar">
+                <div class="nav-left">
+                    <button class="sidebar-toggle-btn" onclick="toggleSidebar()"><i class="fa-solid fa-bars"></i></button>
+                    <div class="search-box">
+                        <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                        <input type="text" placeholder="Tìm kiếm sản phẩm... (Enter)" class="search-input" id="search-input" onkeyup="handleSearch(event)">
+                    </div>
+                </div>
+
+                <div class="nav-right" id="nav-actions-area">
+                    <!-- Guest Actions -->
+                    <button class="btn-settings" onclick="showToast('Cài đặt hệ thống')"><i class="fa-solid fa-sliders"></i></button>
+                    <button class="btn-login" onclick="navigate('login')">Đăng nhập</button>
+                    <button class="btn-register" onclick="navigate('register')">Đăng ký</button>
+                </div>
+            </nav>
+
+            <!-- Content pages container -->
+            <div class="content-pages">
+
+                <!-- 1. Home Dashboard Page -->
+                <div class="page active" id="page-home">
+                    <div class="home-layout-grid">
+                        <div class="home-left-column">
+                            <!-- Banner announcement matching screenshot -->
+                            <div class="announcement-card">
+                                <div class="announcement-details">
+                                    <div class="announcement-header">
+                                        <span class="announcement-title">NONEX CORP SHOP</span>
+                                        <i class="fa-solid fa-circle-check" style="color: var(--accent-blue);"></i>
+                                        <span class="announcement-date">29/4/2026</span>
+                                    </div>
+                                    <div class="announcement-content-text">
+                                        • Hệ thống bán key aimbot và bypass , tối ưu , regedit , dịch vụ mạng xã hội tự động, nạp tiền 24/24<br>
+                                        • Mọi vấn đề cần hỗ trợ, liên hệ Admin qua trang Hỗ Trợ.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Stat row cards -->
+                            <div class="stats-row">
+                                <div class="stat-card">
+                                    <div class="stat-icon-wrapper"><i class="fa-solid fa-wallet"></i></div>
+                                    <span class="stat-title">Số dư</span>
+                                    <span class="stat-value" id="stats-balance">0đ</span>
+                                </div>
+                                <div class="stat-card">
+                                    <div class="stat-icon-wrapper"><i class="fa-solid fa-shopping-bag"></i></div>
+                                    <span class="stat-title">Đơn hàng</span>
+                                    <span class="stat-value" id="stats-orders">0</span>
+                                </div>
+                                <div class="stat-card">
+                                    <div class="stat-icon-wrapper"><i class="fa-solid fa-star"></i></div>
+                                    <span class="stat-title">Thành viên</span>
+                                    <span class="stat-value">Member</span>
+                                </div>
+                            </div>
+
+                            <!-- Topup card banners -->
+                            <div class="banners-row">
+                                <div class="banner-card bank" onclick="navigate('deposit-bank')">
+                                    <div>
+                                        <h3 class="banner-title">NẠP TIỀN<br>CHUYỂN KHOẢN</h3>
+                                        <span class="banner-sub">Nạp tiền tự động qua ngân hàng 24/7</span>
+                                    </div>
+                                    <button class="btn-banner-action">Nạp ngay</button>
+                                </div>
+                                <div class="banner-card scratch" onclick="navigate('deposit-scratch')">
+                                    <div>
+                                        <h3 class="banner-title">NẠP TIỀN<br>NẠP THẺ CÀO</h3>
+                                        <span class="banner-sub">Nạp số dư bằng thẻ cào điện thoại</span>
+                                    </div>
+                                    <button class="btn-banner-action">Nạp ngay</button>
+                                </div>
+                            </div>
+
+                            <!-- Important notice cards -->
+                            <div class="notice-card" style="margin-bottom: 3rem;">
+                                <div class="notice-header">
+                                    <div class="notice-icon-circle"><i class="fa-solid fa-bell"></i></div>
+                                    <span>THÔNG BÁO QUAN TRỌNG</span>
+                                </div>
+                                <div class="notice-content">
+                                    <p>Chào mừng bạn đến với shop của chúng tôi!</p>
+                                    <p>Liên hệ Admin:<a href="#contact" onclick="navigate('contact')" class="notice-link">Xem ngay</a></p>
+                                    <p>Download - Tải xuống:<a href="#downloads" onclick="navigate('downloads')" class="notice-link">Xem ngay</a></p>
+                                    <p>Nạp tiền:<a href="#deposit-bank" onclick="navigate('deposit-bank')" class="notice-link">Xem ngay</a></p>
+                                </div>
+                            </div>
+
+                            <!-- DANH MỤC SẢN PHẨM (Logged-in or guests showcase) -->
+                            <div class="catalog-header" id="products-catalog-section">
+                                <h2 class="catalog-title">DANH MỤC SẢN PHẨM</h2>
+                            </div>
+                            <div class="catalog-filters">
+                                <button class="btn-cat-filter active">Tất cả</button>
+                            </div>
+
+                            <!-- Product Cards Grid matching screenshot -->
+                            <div class="products-grid" id="products-list-grid">
+                                <!-- Populated dynamically by JS -->
+                            </div>
+                        </div>
+
+                        <!-- Right panel scrollable recent orders -->
+                        <div class="home-right-column">
+                            <div class="recent-orders-card">
+                                <div class="recent-orders-header">
+                                    <i class="fa-solid fa-shopping-cart recent-orders-icon"></i>
+                                    <span>ĐƠN HÀNG MỚI NHẤT</span>
+                                </div>
+                                <div class="recent-orders-list-box">
+                                    <div class="recent-orders-list" id="recent-orders-feed-container">
+                                        <!-- Dynamically generated purchase list elements -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. Login View Page -->
+                <div class="page" id="page-login">
+                    <div class="auth-container active">
+                        <div class="auth-card">
+                            <div class="auth-header">
+                                <h2 class="auth-title">NONEX CORP <span style="color: var(--accent-blue);">SHOP</span></h2>
+                                <p class="auth-subtitle">Chào mừng bạn quay lại!<br>Vui lòng đăng nhập để tiếp tục mua sắm tại NONEX CORP SHOP</p>
+                            </div>
+                            <form class="auth-form" id="login-form" onsubmit="handleLoginSubmit(event)">
+                                <div class="form-group">
+                                    <label for="login-user">Tài khoản</label>
+                                    <input type="text" id="login-user" class="form-control" placeholder="Tên tài khoản (ví dụ: LONG11)" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="login-pass" style="display: flex; justify-content: space-between;">Mật khẩu <a href="#" style="font-size: 0.78rem; text-decoration: none; color: var(--accent-blue);">Quên?</a></label>
+                                    <input type="password" id="login-pass" class="form-control" placeholder="••••••••" required>
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; color: var(--text-secondary);">
+                                    <input type="checkbox" id="login-remember">
+                                    <label for="login-remember">Ghi nhớ đăng nhập</label>
+                                </div>
+                                <div class="form-group">
+                                    <label>Xác minh bảo vệ</label>
+                                    <div class="captcha-box-row">
+                                        <div class="captcha-math-display" id="login-captcha-display">10 + 9 = ?</div>
+                                        <input type="number" id="login-captcha-input" class="form-control" placeholder="?" required>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn-auth-submit"><i class="fa-solid fa-right-to-bracket"></i> ĐĂNG NHẬP NGAY</button>
+                                
+                                <div class="auth-divider">Hoặc đăng nhập bằng</div>
+                                <div class="social-auth-row">
+                                    <button type="button" class="btn-social-auth google" onclick="simulateSocialLogin('Google')" title="Đăng nhập bằng Google">
+                                        <i class="fa-brands fa-google"></i>
+                                    </button>
+                                    <button type="button" class="btn-social-auth facebook" onclick="simulateSocialLogin('Facebook')" title="Đăng nhập bằng Facebook">
+                                        <i class="fa-brands fa-facebook-f"></i>
+                                    </button>
+                                    <button type="button" class="btn-social-auth vk" onclick="simulateSocialLogin('VK')" title="Đăng nhập bằng VK">
+                                        <i class="fa-brands fa-vk"></i>
+                                    </button>
+                                </div>
+                                
+                                <div class="auth-footer">
+                                    Bạn chưa có tài khoản? <a href="#register" onclick="navigate('register')" class="auth-link">Đăng ký thành viên</a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. Register View Page -->
+                <div class="page" id="page-register">
+                    <div class="auth-container active">
+                        <div class="auth-card">
+                            <div class="auth-header">
+                                <h2 class="auth-title">NONEX CORP <span style="color: var(--accent-blue);">SHOP</span></h2>
+                                <p class="auth-subtitle">Tạo tài khoản thành viên mới để trải nghiệm dịch vụ</p>
+                            </div>
+                            <form class="auth-form" id="register-form" onsubmit="handleRegisterSubmit(event)">
+                                <div class="form-group">
+                                    <label for="register-user">Tên tài khoản</label>
+                                    <input type="text" id="register-user" class="form-control" placeholder="Ví dụ: LONG11" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="register-email">Địa chỉ Email</label>
+                                    <input type="email" id="register-email" class="form-control" placeholder="phong@example.com" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="register-pass">Mật khẩu</label>
+                                    <input type="password" id="register-pass" class="form-control" placeholder="••••••••" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="register-captcha-input">Xác minh bảo vệ</label>
+                                    <div class="captcha-box-row">
+                                        <div class="captcha-math-display" id="register-captcha-display">5 + 7 = ?</div>
+                                        <input type="number" id="register-captcha-input" class="form-control" placeholder="?" required>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn-auth-submit"><i class="fa-solid fa-user-plus"></i> ĐĂNG KÝ NGAY</button>
+                                
+                                <div class="auth-divider">Hoặc đăng ký bằng</div>
+                                <div class="social-auth-row">
+                                    <button type="button" class="btn-social-auth google" onclick="simulateSocialLogin('Google')" title="Đăng ký bằng Google">
+                                        <i class="fa-brands fa-google"></i>
+                                    </button>
+                                    <button type="button" class="btn-social-auth facebook" onclick="simulateSocialLogin('Facebook')" title="Đăng ký bằng Facebook">
+                                        <i class="fa-brands fa-facebook-f"></i>
+                                    </button>
+                                    <button type="button" class="btn-social-auth vk" onclick="simulateSocialLogin('VK')" title="Đăng ký bằng VK">
+                                        <i class="fa-brands fa-vk"></i>
+                                    </button>
+                                </div>
+                                
+                                <div class="auth-footer" style="margin-top: 1rem;">
+                                    Bạn đã có tài khoản? <a href="#login" onclick="navigate('login')" class="auth-link">Đăng nhập ngay</a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. Deposit Bank Page -->
+                <div class="page" id="page-deposit-bank">
+                    <div style="display: flex; gap: 0.8rem; margin-bottom: 2rem; justify-content: center;">
+                        <button class="btn-cat-filter active" onclick="navigate('deposit-bank')">Ngân hàng / MoMo</button>
+                        <button class="btn-cat-filter" style="background: rgba(255,255,255,0.03);" onclick="navigate('deposit-scratch')">Thẻ cào siêu rẻ</button>
+                    </div>
+                    
+                    <div class="deposit-grid" style="grid-template-columns: 1.2fr 1fr; margin-bottom: 2rem; gap: 2rem;">
+                        <!-- Left card: Tạo Lệnh Nạp Tiền -->
+                        <div class="deposit-box" style="position: relative;">
+                            <h3 class="deposit-box-title">
+                                <i class="fa-solid fa-file-invoice-dollar"></i> TẠO LỆNH NẠP TIỀN
+                            </h3>
+                            
+                            <div class="form-group" style="position: relative; margin-top: 1.5rem; margin-bottom: 1.5rem;">
+                                <label>CHỌN CỔNG THANH TOÁN</label>
+                                <div class="custom-select-wrapper">
+                                    <div class="custom-select-header" onclick="toggleDepositDropdownSelect(event)">
+                                        <span id="selected-gateway-label"><i class="fa-solid fa-building-columns"></i> Bấm để chọn ngân hàng/ví...</span>
+                                        <i class="fa-solid fa-chevron-down" id="gateway-chevron"></i>
+                                    </div>
+                                    <div class="custom-select-options" id="gateway-options-list">
+                                        <!-- MB Bank Option -->
+                                        <div class="custom-select-option-item" onclick="selectGateway('mb')">
+                                            <i class="fa-solid fa-building-columns" style="color: var(--accent-blue); font-size: 1.2rem;"></i>
+                                            <div class="gateway-option-details">
+                                                <span class="gateway-name">MB Bank (Quân Đội)</span>
+                                                <span class="gateway-stk">STK: 0365627634</span>
+                                                <span class="gateway-ctk">CTK: LE DUY BAO PHONG</span>
+                                            </div>
+                                            <span class="gateway-tag auto">AUTO</span>
+                                        </div>
+                                        <!-- Binance Pay Option -->
+                                        <div class="custom-select-option-item" onclick="selectGateway('binance')">
+                                            <div class="gateway-binance-icon"><i class="fa-brands fa-ethereum" style="color: #f0b90b;"></i></div>
+                                            <div class="gateway-option-details">
+                                                <span class="gateway-name">Binance Pay</span>
+                                                <span class="gateway-stk">Binance ID: 1125940509</span>
+                                            </div>
+                                            <span class="gateway-tag usdt">USDT</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Amount Input Field -->
+                            <div class="form-group" id="deposit-amount-group" style="display: none; margin-bottom: 1.5rem;">
+                                <label for="deposit-amount-input">SỐ TIỀN CẦN NẠP (VNĐ)</label>
+                                <input type="number" id="deposit-amount-input" class="form-control" placeholder="Nhập số tiền cần nạp (tối thiểu 10.000đ)" oninput="onDepositAmountChange()">
+                            </div>
+                            
+                            <button class="btn-confirm-purchase" id="btn-generate-qr" style="display: none;" onclick="generateQRDeposit()">
+                                <i class="fa-solid fa-qrcode"></i> TẠO MÃ QR THANH TOÁN
+                            </button>
+                        </div>
+                        
+                        <!-- Right card: QR Display Panel -->
+                        <div class="deposit-box" id="qr-display-panel" style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 380px; text-align: center;">
+                            <div id="qr-placeholder-state" style="display: block;">
+                                <div style="width: 70px; height: 70px; border-radius: 50%; background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border-color); display: flex; align-items: center; justify-content: center; font-size: 1.8rem; color: var(--text-muted); margin: 0 auto 1.5rem auto;">
+                                    <i class="fa-solid fa-building-columns"></i>
+                                </div>
+                                <p style="font-size: 0.88rem; color: var(--text-secondary); max-width: 280px; line-height: 1.6;">Chọn cổng và nhập số tiền để hệ thống tạo mã QR thanh toán nhanh.</p>
+                            </div>
+                            
+                            <div id="qr-active-state" style="display: none; width: 100%;">
+                                <h4 style="font-size: 1.05rem; font-weight: 700; margin-bottom: 1.2rem; color: #ffffff;">Quét mã QR để chuyển khoản</h4>
+                                <div style="width: 200px; height: 200px; padding: 10px; background: white; border-radius: 12px; margin: 0 auto 1.5rem auto; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 15px rgba(0,0,0,0.2);">
+                                    <img id="qr-code-img" src="" alt="QR Code" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+                                </div>
+                                
+                                <div style="text-align: left; margin-bottom: 1.5rem; background: rgba(255,255,255,0.01); border: 1px solid var(--border-color); border-radius: 8px; padding: 0.5rem 0.8rem;">
+                                    <div class="bank-detail-row">
+                                        <span class="bank-detail-label">Cổng nạp</span>
+                                        <span class="bank-detail-value" id="qr-val-gateway">MB Bank</span>
+                                    </div>
+                                    <div class="bank-detail-row">
+                                        <span class="bank-detail-label">Số tài khoản / ID</span>
+                                        <span class="bank-detail-value"><span id="qr-val-stk">0365627634</span> <button class="btn-copy" onclick="copyTextValue('qr-val-stk')">Copy</button></span>
+                                    </div>
+                                    <div class="bank-detail-row" id="qr-ctk-row">
+                                        <span class="bank-detail-label">Chủ tài khoản</span>
+                                        <span class="bank-detail-value" id="qr-val-ctk">LE DUY BAO PHONG</span>
+                                    </div>
+                                    <div class="bank-detail-row">
+                                        <span class="bank-detail-label">Số tiền</span>
+                                        <span class="bank-detail-value" id="qr-val-amount" style="color: var(--accent-green);">100,000đ</span>
+                                    </div>
+                                    <div class="bank-detail-row">
+                                        <span class="bank-detail-label">Nội dung</span>
+                                        <span class="bank-detail-value"><span id="qr-val-memo">NONEXCORPSHOP LONG11</span> <button class="btn-copy" onclick="copyTextValue('qr-val-memo')">Copy</button></span>
+                                    </div>
+                                </div>
+                                
+                                <button class="btn-register" style="width: 100%;" onclick="simulateQRDepositSuccess()">
+                                    <i class="fa-solid fa-circle-check"></i> Xác nhận đã chuyển (Giả lập)
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Bottom table: Lịch Sử Nạp Tiền Gần Đây -->
+                    <div class="orders-layout-box" style="padding: 0; overflow: hidden; margin-top: 2rem;">
+                        <div style="padding: 1.2rem 1.5rem; display: flex; align-items: center; gap: 0.8rem; border-bottom: 1px solid var(--border-color);">
+                            <i class="fa-solid fa-clock-rotate-left" style="color: var(--accent-blue);"></i>
+                            <h3 style="font-size: 1.05rem; font-weight: 700; color: #ffffff;">LỊCH SỬ NẠP TIỀN GẦN ĐÂY</h3>
+                        </div>
+                        <div style="padding: 1.5rem;">
+                            <div class="orders-table-wrapper" id="deposit-history-wrapper" style="display: none;">
+                                <table class="orders-table">
+                                    <thead>
+                                        <tr>
+                                            <th>THỜI GIAN</th>
+                                            <th>CỔNG NẠP</th>
+                                            <th>SỐ TIỀN</th>
+                                            <th>NỘI DUNG</th>
+                                            <th>TRẠNG THÁI</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="deposit-history-list-body">
+                                        <!-- Dynamic deposit log rows -->
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                            <div id="deposit-history-empty" style="text-align: center; padding: 2rem; color: var(--text-secondary); font-size: 0.88rem;">
+                                Hiện chưa có lịch sử nạp tiền nào...
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5. Deposit Scratch Page -->
+                <div class="page" id="page-deposit-scratch">
+                    <div style="display: flex; gap: 0.8rem; margin-bottom: 2rem; justify-content: center;">
+                        <button class="btn-cat-filter" style="background: rgba(255,255,255,0.03);" onclick="navigate('deposit-bank')">Ngân hàng / MoMo</button>
+                        <button class="btn-cat-filter active" onclick="navigate('deposit-scratch')">Thẻ cào siêu rẻ</button>
+                    </div>
+                    <div class="deposit-grid" style="grid-template-columns: 2fr 1fr;">
+                        <div class="deposit-box">
+                            <h3 class="deposit-box-title"><i class="fa-solid fa-mobile-screen"></i> NẠP THẺ CÀO TỰ ĐỘNG</h3>
+                            <form class="card-scratch-form" onsubmit="handleScratchSubmit(event)">
+                                <div class="form-group">
+                                    <label for="scratch-telco">Loại thẻ</label>
+                                    <select id="scratch-telco" class="form-control" required>
+                                        <option value="">Chọn loại thẻ</option>
+                                        <option value="Viettel">Viettel</option>
+                                        <option value="Vinaphone">Vinaphone</option>
+                                        <option value="Mobifone">Mobifone</option>
+                                        <option value="Zing">Zing</option>
+                                    </select>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="scratch-amount">Mệnh giá</label>
+                                        <select id="scratch-amount" class="form-control" required>
+                                            <option value="">Chọn mệnh giá</option>
+                                            <option value="10000">10.000đ</option>
+                                            <option value="20000">20.000đ</option>
+                                            <option value="50000">50.000đ</option>
+                                            <option value="100000">100.000đ</option>
+                                            <option value="200000">200.000đ</option>
+                                            <option value="500000">500.000đ</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="scratch-qty">Số lượng</label>
+                                        <input type="number" id="scratch-qty" class="form-control" value="1" readonly>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="scratch-code">Mã thẻ (PIN)</label>
+                                    <input type="text" id="scratch-code" class="form-control" placeholder="Nhập mã thẻ..." required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="scratch-seri">Số Seri</label>
+                                    <input type="text" id="scratch-seri" class="form-control" placeholder="Nhập số seri..." required>
+                                </div>
+                                <button type="submit" class="btn-auth-submit" style="margin-top: 1rem;">Nạp thẻ ngay</button>
+                            </form>
+                        </div>
+
+                        <div class="deposit-box">
+                            <h3 class="deposit-box-title"><i class="fa-solid fa-percent"></i> BẢNG CHIẾT KHẤU</h3>
+                            <table class="orders-table" style="font-size: 0.82rem;">
+                                <thead>
+                                    <tr>
+                                        <th>Loại thẻ</th>
+                                        <th>Thực nhận</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td style="font-weight: 700;">Viettel</td>
+                                        <td style="color: var(--accent-green); font-weight: 700; text-align: right;">80%</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-weight: 700;">Vinaphone</td>
+                                        <td style="color: var(--accent-green); font-weight: 700; text-align: right;">78%</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-weight: 700;">Mobifone</td>
+                                        <td style="color: var(--accent-green); font-weight: 700; text-align: right;">75%</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-weight: 700;">Zing</td>
+                                        <td style="color: var(--accent-green); font-weight: 700; text-align: right;">78%</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 6. Orders Page (Theo dõi đơn hàng) -->
+                <div class="page" id="page-orders">
+                    <div class="orders-page-header">
+                        <h2 style="font-size: 1.5rem; font-weight: 800; margin-bottom: 0.4rem;">Đơn hàng của tôi</h2>
+                        <div style="font-size: 0.82rem; color: var(--text-secondary);">Trang chủ &gt; Đơn hàng</div>
+                    </div>
+
+                    <!-- Stats row -->
+                    <div class="stats-row">
+                        <div class="stat-card">
+                            <div class="stat-icon-wrapper"><i class="fa-solid fa-cart-shopping"></i></div>
+                            <span class="stat-title">Tổng đơn hàng</span>
+                            <span class="stat-value" id="orders-stat-total">0</span>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon-wrapper"><i class="fa-solid fa-clock"></i></div>
+                            <span class="stat-title">Đang xử lý</span>
+                            <span class="stat-value">0</span>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon-wrapper"><i class="fa-solid fa-circle-check"></i></div>
+                            <span class="stat-title">Hoàn thành</span>
+                            <span class="stat-value" id="orders-stat-completed">0</span>
+                        </div>
+                    </div>
+
+                    <!-- Empty orders list panel -->
+                    <div class="orders-layout-box" id="orders-empty-box">
+                        <div class="orders-empty-state">
+                            <div class="empty-icon-wrapper"><i class="fa-solid fa-shopping-bag"></i></div>
+                            <h4 class="empty-title">Hiện chưa có đơn hàng nào</h4>
+                            <p class="empty-description">Bạn chưa thực hiện bất kỳ giao dịch mua sắm nào. Hãy khám phá các sản phẩm!</p>
+                            <button class="btn-register" onclick="navigate('home')">Mua sắm ngay</button>
+                        </div>
+                    </div>
+
+                    <!-- Orders table container -->
+                    <div class="orders-layout-box" id="orders-table-container" style="display: none; margin-top: 2rem;">
+                        <div class="orders-table-wrapper">
+                            <table class="orders-table">
+                                <thead>
+                                    <tr>
+                                        <th>Sản phẩm</th>
+                                        <th>Thời gian</th>
+                                        <th>Số lượng</th>
+                                        <th>Tổng tiền</th>
+                                        <th>Key nhận được</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="orders-list-body">
+                                    <!-- Dynamic rows created upon successful purchase -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 7. History Page (Lịch sử dòng tiền) -->
+                <div class="page" id="page-history">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; flex-wrap: wrap; gap: 1rem;">
+                        <h2 style="font-size: 1.5rem; font-weight: 800;">Lịch sử giao dịch</h2>
+                        <div style="font-size: 0.85rem; color: var(--text-secondary);">Trang chủ &gt; Lịch sử giao dịch</div>
+                    </div>
+                    
+                    <div class="orders-layout-box" id="history-box" style="padding: 0; overflow: hidden;">
+                        <!-- Inner Card Header matching screenshot 1 -->
+                        <div style="padding: 1.2rem 1.5rem; display: flex; align-items: center; gap: 1rem; border-bottom: 1px solid var(--border-color);">
+                            <div style="background: rgba(0, 230, 118, 0.1); border: 1px solid rgba(0, 230, 118, 0.2); color: var(--accent-green); width: 42px; height: 42px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.25rem;">
+                                <i class="fa-solid fa-clock-rotate-left"></i>
+                            </div>
+                            <div>
+                                <h3 style="font-size: 1.1rem; font-weight: 700; color: #ffffff;">Lịch sử dòng tiền</h3>
+                                <p style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 0.15rem;">Chi tiết các khoản nạp và chi tiêu</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Content Area -->
+                        <div style="padding: 1.5rem;">
+                            <div class="orders-table-wrapper" id="history-table-container" style="display: none;">
+                                <table class="orders-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Mô tả</th>
+                                            <th>Thời gian</th>
+                                            <th>Thay đổi số dư</th>
+                                            <th>Số dư cuối</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="history-flow-list-body">
+                                        <!-- Dynamic flow log rows -->
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                            <div class="orders-empty-state" id="history-empty-view" style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 4rem 0;">
+                                <div style="width: 70px; height: 70px; border-radius: 50%; border: 1px solid var(--border-color); display: flex; align-items: center; justify-content: center; font-size: 1.8rem; color: var(--text-muted); margin-bottom: 1.2rem;">
+                                    <i class="fa-solid fa-database"></i>
+                                </div>
+                                <h4 class="empty-title" style="font-size: 1.15rem; font-weight: 700; color: #ffffff; margin-bottom: 0.5rem;">Chưa có giao dịch nào</h4>
+                                <p class="empty-description" style="font-size: 0.88rem; color: var(--text-secondary); text-align: center; max-width: 320px;">Lịch sử nạp tiền và thanh toán của bạn sẽ xuất hiện tại đây.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 8. Profile Settings Page -->
+                <div class="page" id="page-profile">
+                    <h2 style="font-size: 1.5rem; font-weight: 800; margin-bottom: 2rem; border-left: 4px solid var(--accent-blue); padding-left: 1rem;">Thông tin tài khoản</h2>
+                    <div class="deposit-grid">
+                        <div class="deposit-box">
+                            <h3 class="deposit-box-title"><i class="fa-solid fa-id-card"></i> Thông tin cá nhân</h3>
+                            <div class="bank-detail-row">
+                                <span class="bank-detail-label">Tên tài khoản</span>
+                                <span class="bank-detail-value" id="profile-user-display">Chưa đăng nhập</span>
+                            </div>
+                            <div class="bank-detail-row">
+                                <span class="bank-detail-label">Loại thành viên</span>
+                                <span class="bank-detail-value" style="color: var(--accent-orange);">Member (Vip)</span>
+                            </div>
+                            <div class="bank-detail-row">
+                                <span class="bank-detail-label">Số dư tài khoản</span>
+                                <span class="bank-detail-value" id="profile-balance-display">0đ</span>
+                            </div>
+                            <button class="btn-register" style="margin-top: 1.5rem; background: var(--accent-red);" onclick="logoutUser()">Đăng xuất tài khoản</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 9. Services mock pages: News, Downloads, Contact -->
+                <div class="page" id="page-news">
+                    <h2 style="font-size: 1.5rem; font-weight: 800; margin-bottom: 2rem; border-left: 4px solid var(--accent-blue); padding-left: 1rem;">Bảng tin tức & Cập nhật</h2>
+                    <div class="announcement-card">
+                        <div class="announcement-details">
+                            <div class="announcement-header">
+                                <span class="announcement-title">CẬP NHẬT BYPASS VÀ AUTO AIM CHO PHIÊN BẢN MỚI OB53</span>
+                                <span class="announcement-date">28/5/2026</span>
+                            </div>
+                            <p class="announcement-content-text">
+                                • Cập nhật hệ thống tối ưu hóa Aimbot an toàn 100%. Đã fix các lỗi crash trên trình giả lập HD-Player.<br>
+                                • Hỗ trợ hoàn toàn cho Win 10, Win 11.<br>
+                                • Hãy tải phiên bản bypass mới nhất ở thẻ Tải xuống.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="page" id="page-downloads">
+                    <h2 style="font-size: 1.5rem; font-weight: 800; margin-bottom: 2rem; border-left: 4px solid var(--accent-blue); padding-left: 1rem;">Tải xuống tài nguyên (Bypass & Tool Free)</h2>
+                    <div class="orders-layout-box">
+                        <div class="bank-detail-row" style="padding: 1rem 0;">
+                            <div>
+                                <h4 style="font-weight: 700;">NONEX CORP SHOP Bypass Launcher V2</h4>
+                                <span style="font-size: 0.8rem; color: var(--text-secondary);">Phiên bản mới OB53 - Hỗ trợ HD-Player</span>
+                            </div>
+                            <button class="btn-register" onclick="showToast('Bắt đầu tải Bypass Launcher...')">Tải xuống (Free)</button>
+                        </div>
+                        <div class="bank-detail-row" style="padding: 1rem 0;">
+                            <div>
+                                <h4 style="font-weight: 700;">Aimbot External Helper</h4>
+                                <span style="font-size: 0.8rem; color: var(--text-secondary);">Hỗ trợ tự động ngắm bắn thông minh</span>
+                            </div>
+                            <button class="btn-register" onclick="showToast('Bắt đầu tải Aimbot Tool...')">Tải xuống (Free)</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="page" id="page-contact">
+                    <h2 style="font-size: 1.5rem; font-weight: 800; margin-bottom: 2rem; border-left: 4px solid var(--accent-blue); padding-left: 1rem;">Thông tin liên hệ Admin hỗ trợ</h2>
+                    <div class="deposit-box">
+                        <p style="margin-bottom: 1rem; color: var(--text-secondary);">Nếu có bất kỳ thắc mắc nào liên quan đến nạp tiền bị chậm, lỗi phần mềm, hoặc mua key bị lỗi, vui lòng liên hệ trực tiếp:</p>
+
+                        <div class="bank-detail-row">
+                            <span class="bank-detail-label">Facebook cá nhân</span>
+                            <span class="bank-detail-value"><a href="https://www.facebook.com/baophong999" target="_blank" style="color: var(--accent-blue); text-decoration: none;">fb.com/baophong999</a></span>
+                        </div>
+                        <div class="bank-detail-row">
+                            <span class="bank-detail-label">Thời gian làm việc</span>
+                            <span class="bank-detail-value">Hỗ trợ 24/7 nhiệt tình</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Footer area -->
+            <footer class="copyright-footer">
+                &copy; 2026 NONEX CORP SHOP - All Rights Reserved
+            </footer>
+        </div>
+    </div>
+
+    <!-- Backdrop overlay for modal dialogs -->
+    <div class="modal-overlay" id="overlay-backdrop" onclick="closeAllModals()"></div>
+
+    <!-- ==========================================
+         Purchase Modal Popup (Replicating Screenshots)
+         ========================================== -->
+    <div class="buy-modal" id="modal-purchase-key">
+        <button class="btn-close-modal" onclick="closePurchaseModal()"><i class="fa-solid fa-xmark"></i></button>
+        <div class="buy-modal-grid">
+            <!-- Left Grid Details -->
+            <div class="buy-modal-left">
+                <span class="modal-product-tag" id="buy-modal-type-tag">Sản phẩm</span>
+                <h2 class="modal-product-title" id="buy-modal-title">BypassUID</h2>
+                <div class="modal-product-img-box">
+                    <img src="assets/bypass_uid.png" alt="Product Image" id="buy-modal-img">
+                </div>
+                <div class="modal-description-box">
+                    <span class="modal-description-title">Mô tả sản phẩm</span>
+                    <ul class="modal-features-list" id="buy-modal-features">
+                        <!-- Filled dynamically by JS -->
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Right Grid Details -->
+            <div class="buy-modal-right">
+                <div class="modal-meta-row">
+                    <span style="font-size: 1.35rem; font-weight: 800; color: var(--accent-blue);" id="buy-modal-display-price">15.000đ</span>
+                    <span class="modal-stock-info">KHO: <strong id="buy-modal-stock-qty" style="color: var(--text-primary);">6</strong> | ĐÃ BÁN: <strong id="buy-modal-sold-qty" style="color: var(--text-primary);">260</strong></span>
+                </div>
+
+                <!-- Package select lists -->
+                <div class="modal-package-section">
+                    <span class="modal-package-title">Chọn gói</span>
+                    <div class="package-list" id="buy-modal-packages-container">
+                        <!-- Dynamic items generated for product key packages -->
+                    </div>
+                </div>
+
+                <!-- Quantity changes -->
+                <div class="quantity-box">
+                    <span class="modal-package-title">Số lượng mua</span>
+                    <div class="qty-controls">
+                        <button class="qty-btn" onclick="updatePurchaseQty(-1)">-</button>
+                        <input type="number" class="qty-val-input" id="buy-qty-input" value="1" min="1" readonly>
+                        <button class="qty-btn" onclick="updatePurchaseQty(1)">+</button>
+                    </div>
+                </div>
+
+                <!-- Promo codes input -->
+                <div class="form-group" style="margin-top: 0.3rem;">
+                    <label for="buy-promo-code" style="font-size: 0.72rem;">Mã giảm giá</label>
+                    <div style="display: flex; gap: 0.5rem;">
+                        <input type="text" id="buy-promo-code" class="form-control" placeholder="NHẬP MÃ..." style="flex-grow: 1; padding: 0.5rem 1rem;">
+                        <button class="btn-register" style="padding: 0 1rem; border-radius: 8px;" onclick="applyKeyPromo()">Áp dụng</button>
+                    </div>
+                </div>
+
+                <!-- Bill breakdown summary list -->
+                <div class="invoice-summary">
+                    <div class="invoice-row">
+                        <span>Đơn giá:</span>
+                        <span id="buy-invoice-unit-price">15.000đ</span>
+                    </div>
+                    <div class="invoice-row">
+                        <span>Số lượng:</span>
+                        <span id="buy-invoice-qty">1</span>
+                    </div>
+                    <div class="invoice-row highlight">
+                        <span>Thành tiền:</span>
+                        <span id="buy-invoice-subtotal">15.000đ</span>
+                    </div>
+                    <div class="invoice-row">
+                        <span>Số dư:</span>
+                        <span id="buy-invoice-balance">0đ</span>
+                    </div>
+                    <div class="invoice-row highlight negative" id="buy-invoice-remaining-row">
+                        <span>Còn lại:</span>
+                        <span id="buy-invoice-remaining-balance">-15.000đ</span>
+                    </div>
+                </div>
+
+                <button class="btn-confirm-purchase" onclick="confirmPurchaseKey()"><i class="fa-solid fa-cart-shopping"></i> XÁC NHẬN MUA</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script source -->
+    <script src="app.js"></script>
+</body>
+</html>
