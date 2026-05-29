@@ -101,7 +101,7 @@ let products = [
     },
     {
         id: "panel-ios",
-        name: "PANEL IOS",
+        name: "PANEL IOS + ADR",
         category: "panel",
         image: "assets/panel_ios.png",
         stock: 45,
@@ -147,7 +147,7 @@ let purchaseQty = 1;
 
 // Simulated Users for Live Purchases Feed
 const mockUsernames = ["tru****", "cao****", "coo****", "mem****", "gam****", "Kha****", "phong****", "milo****", "leduy****", "bao****"];
-const mockFeedProducts = ["BypassUID", "MOD MENU PREMIUM", "SUPREME", "BYPASSMEME", "PANEL IOS"];
+const mockFeedProducts = ["BypassUID", "MOD MENU PREMIUM", "SUPREME", "BYPASSMEME", "PANEL IOS + ADR"];
 const mockTimeSuffixes = ["vừa mua", "2 phút trước", "5 phút trước", "15 giây trước", "30 giây trước"];
 
 // DOM Elements
